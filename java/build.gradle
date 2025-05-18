@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.5'
+    id 'java'
+}
+
+
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven {
+        name = 'Central Portal Snapshots'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
+    }    
+}
+
+dependencies {
+
+    implementation 'org.springframework.ai:spring-ai-starter-mcp-server:1.0.0-RC1'
+    implementation 'org.springframework.ai:spring-ai-starter-mcp-client-webflux:1.0.0-RC1'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    //test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
